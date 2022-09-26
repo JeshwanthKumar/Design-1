@@ -12,11 +12,11 @@ class MyHashSet:
         return key % self.length   #First hash function: Modulus the key with the length to get the index in the primary array
     
     def doublehashkey(self, key):
-        return key // self.length   #Seconf hash function: Floor divide the key with the length to get the index in the secondary array
+        return key // self.length   #Second hash function: Floor divide the key with the length to get the index in the secondary array
 
     def add(self, key: int) -> None:
-        hashIndex = self.hashkey(key)
-        doubleHashIndex = self.doublehashkey(key)
+        hashIndex = self.hashkey(key)  #Assigning hashIndex to the index found by calling hahskey method for the primary array
+        doubleHashIndex = self.doublehashkey(key)  #Assigning doubleHashIndex to the index found by calling doublehashkey method for the secondary array
         
         if self.primary[hashIndex] == None:
             if hashIndex == 0:
@@ -27,15 +27,17 @@ class MyHashSet:
         self.primary[hashIndex][doubleHashIndex] = True  #If the key enters the index change the corresponding index's key to "True", meaning the key is added
 
     def remove(self, key: int) -> None:
-        hashIndex = self.hashkey(key)
-        doubleHashIndex = self.doublehashkey(key)
+        hashIndex = self.hashkey(key)  #Assigning hashIndex to the index found by calling hahskey method for the primary array
+        doubleHashIndex = self.doublehashkey(key)  #Assigning doubleHashIndex to the index found by calling doublehashkey method for the secondary array
+        
         
         if self.primary[hashIndex] != None:
             self.primary[hashIndex][doubleHashIndex] = False #If the index of the key is found in the secondary array change the key to "False"
             
     def contains(self, key: int) -> bool:
-        hashIndex = self.hashkey(key)
-        doubleHashIndex = self.doublehashkey(key)
+        hashIndex = self.hashkey(key)  #Assigning hashIndex to the index found by calling hahskey method for the primary array
+        doubleHashIndex = self.doublehashkey(key)  #Assigning doubleHashIndex to the index found by calling doublehashkey method for the secondary array
+        
         
         if self.primary[hashIndex] != None:
             return self.primary[hashIndex][doubleHashIndex] #Return "True" if the key is found
