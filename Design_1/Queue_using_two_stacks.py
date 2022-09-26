@@ -24,8 +24,7 @@ class MyQueue:
         return self.outStack[-1]                #Return the last element on outStack
 
     def empty(self) -> bool:
-        return len(self.inStack) + len(self.outStack) == 0      
-
+        return len(self.inStack) + len(self.outStack) == 0      #Return true if the addition of length of inStack and outStack is equal to 0, Else return - 1
 
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
